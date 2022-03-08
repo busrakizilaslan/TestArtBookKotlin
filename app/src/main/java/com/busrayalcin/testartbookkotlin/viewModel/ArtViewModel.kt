@@ -35,6 +35,7 @@ class ArtViewModel @Inject constructor(
     val insertArtMessage : LiveData<Resource<Art>>
         get() = insertArtMsg
 
+    //Solving the navigation bug
     fun resetInsertArtMsg(){
         insertArtMsg = MutableLiveData<Resource<Art>>()
     }

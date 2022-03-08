@@ -46,9 +46,9 @@ class ArtDetailsFragment @Inject constructor(
         requireActivity().onBackPressedDispatcher.addCallback(callback)
 
         binding.saveButton.setOnClickListener {
-            viewModel.makeArt(binding.nameText.toString(),
-                binding.artistText.toString(),
-                binding.yearText.toString())
+            viewModel.makeArt(binding.nameText.text.toString(),
+                binding.artistText.text.toString(),
+                binding.yearText.text.toString())
         }
     }
 
@@ -69,11 +69,9 @@ class ArtDetailsFragment @Inject constructor(
                     Toast.makeText(requireContext(), it.message ?: "Error", Toast.LENGTH_LONG).show()
                 }
                 Status.LOADING -> {
-
                 }
             }
         })
-
     }
 
     override fun onDestroyView() {

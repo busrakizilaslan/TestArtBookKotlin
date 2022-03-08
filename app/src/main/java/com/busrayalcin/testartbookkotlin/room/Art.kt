@@ -8,7 +8,7 @@ data class Art(
     var name : String,
     var artistName : String,
     var year : Int,
-    var ImageUrl : String,
+    var imageUrl : String,
     @PrimaryKey(autoGenerate = true)
-    var Id : Int? = null
+    var id : Int? = null
 )
