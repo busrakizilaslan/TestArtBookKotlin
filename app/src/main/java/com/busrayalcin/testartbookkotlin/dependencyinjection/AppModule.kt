@@ -3,7 +3,13 @@ package com.busrayalcin.testartbookkotlin.dependencyinjection
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.busrayalcin.testartbookkotlin.R
 import com.busrayalcin.testartbookkotlin.api.RetrofitAPI
+import com.busrayalcin.testartbookkotlin.repo.ArtRepository
+import com.busrayalcin.testartbookkotlin.repo.ArtRepositoryInterface
+import com.busrayalcin.testartbookkotlin.room.ArtDAO
 import com.busrayalcin.testartbookkotlin.room.ArtDatabase
 import com.busrayalcin.testartbookkotlin.util.Util.BASE_URL
 import dagger.Module
@@ -41,4 +47,16 @@ object AppModule {
             .build()
             .create(RetrofitAPI::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun injectNormalRepo(dao: ArtDAO, api: RetrofitAPI) = ArtRepository(dao, api) as ArtRepositoryInterface
+
+    @Singleton
+    @Provides
+    fun injectGlide(@ApplicationContext context: Context) = Glide.with(context)
+        .setDefaultRequestOptions(
+            RequestOptions().placeholder(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.ic_launcher_foreground)
+        )
 }

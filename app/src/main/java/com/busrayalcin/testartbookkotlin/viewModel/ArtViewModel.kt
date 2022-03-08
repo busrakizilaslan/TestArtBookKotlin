@@ -8,10 +8,12 @@ import com.busrayalcin.testartbookkotlin.model.ImageResponse
 import com.busrayalcin.testartbookkotlin.repo.ArtRepositoryInterface
 import com.busrayalcin.testartbookkotlin.room.Art
 import com.busrayalcin.testartbookkotlin.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.time.Year
 import javax.inject.Inject
 
+@HiltViewModel
 class ArtViewModel @Inject constructor(
     private val repository : ArtRepositoryInterface
 ) : ViewModel() {
